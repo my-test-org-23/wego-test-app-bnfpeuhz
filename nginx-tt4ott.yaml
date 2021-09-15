@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: my-nginx-tt4ott
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-tt4ott
+  namespace: my-nginx-tt4ott
+  labels:
+    name: nginx-tt4ott
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: nginx-tt4ott
+  template:
+    metadata:
+      namespace: my-nginx-tt4ott
+      labels:
+        name: nginx-tt4ott
+    spec:
+      containers:
+      - name: nginx-tt4ott
+        image: nginx
+        ports:
+        - containerPort: 80
+
